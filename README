@@ -1,7 +1,4 @@
-elasticsearch
-
 This is the elasticsearch module.
 
-You need to provide a package for elasticsearch yourselves and make it available.  E.g. with fpm:
-
-fpm -a all -s dir -t deb --prefix /opt/ -n elasticsearch -v 0.18.6~1 -m 'Your Name' -d openjdk-6-jdk elasticsearch
+You need to have the elasticsearch package in your repositories.  You
+can download it from the elasticsearch website.

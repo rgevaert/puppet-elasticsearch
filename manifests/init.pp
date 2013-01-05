@@ -9,17 +9,16 @@
 # Requires:
 #
 # Sample Usage:
+#   include elasticsearch
 #
-# [Remember: No empty lines between comments and class definition]
-class elasticsearch {
+class elasticsearch (
+  $package        = $elasticsearch::params::package,
+  $version        = $elasticsearch::params::version,
+  $service        = $elasticsearch::params::service,
+  $config_content = $elasticsearch::params::config_content
+  ) inherits elasticsearch::params {
 
-  include elasticsearch::params
-  include elasticsearch::install
-  include elasticsearch::config
-  include elasticsearch::service
-
-  Class['elasticsearch::params'] ->
-  Class['elasticsearch::install'] ->
-  Class['elasticsearch::config'] ->
-  Class['elasticsearch::service']
+  class{'elasticsearch::install':;} ~>
+    class{'elasticsearch::config':;} ~>
+    class{'elasticsearch::service':;}
 }
