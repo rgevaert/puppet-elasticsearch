@@ -82,6 +82,10 @@
 #
 # node.rack: rack314
 
+# By default, multiple nodes are allowed to start from the same installation location
+# to disable it, set the following:
+# node.max_local_storage_nodes: 1
+
 
 #################################### Index ####################################
 
@@ -143,7 +147,7 @@
 # path.data: /path/to/data
 #
 # Can optionally include more than one location, causing data to be striped across
-# the locations (à la RAID 0) on a file level, favouring locations with most free
+# the locations (a la RAID 0) on a file level, favouring locations with most free
 # space on creation. For example:
 #
 # path.data: /path/to/data1,/path/to/data2
@@ -159,6 +163,13 @@
 # Path to where plugins are installed:
 #
 # path.plugins: /path/to/plugins
+
+
+#################################### Plugin ###################################
+
+# If a plugin listed here is not installed for current node, the node will not start.
+#
+# plugin.mandatory: mapper-attachments,lang-groovy
 
 
 ################################### Memory ####################################
@@ -234,7 +245,8 @@
 # gateway.type: local
 
 # Settings below control how and when to start the initial recovery process on
-# a full cluster restart (to reuse as much local data as possible).
+# a full cluster restart (to reuse as much local data as possible when using shared
+# gateway).
 
 # Allow recovery process after N nodes in a cluster are up:
 #
@@ -246,7 +258,8 @@
 # gateway.recover_after_time: 5m
 
 # Set how many nodes are expected in this cluster. Once these N nodes
-# are up, begin recovery process immediately:
+# are up (and recover_after_nodes is met), begin recovery process immediately
+# (without waiting for recover_after_time to expire):
 #
 # gateway.expected_nodes: 2
 
@@ -284,7 +297,7 @@
 
 # Set to ensure a node sees N other master eligible nodes to be considered
 # operational within the cluster. Set this option to a higher value (2-4)
-# for large clusters:
+# for large clusters (>3 nodes):
 #
 # discovery.zen.minimum_master_nodes: 1
 
@@ -325,7 +338,6 @@
 
 # Shard level query and fetch threshold logging.
 
-#index.search.slowlog.level: TRACE
 #index.search.slowlog.threshold.query.warn: 10s
 #index.search.slowlog.threshold.query.info: 5s
 #index.search.slowlog.threshold.query.debug: 2s
@@ -335,3 +347,18 @@
 #index.search.slowlog.threshold.fetch.info: 800ms
 #index.search.slowlog.threshold.fetch.debug: 500ms
 #index.search.slowlog.threshold.fetch.trace: 200ms
+
+#index.indexing.slowlog.threshold.index.warn: 10s
+#index.indexing.slowlog.threshold.index.info: 5s
+#index.indexing.slowlog.threshold.index.debug: 2s
+#index.indexing.slowlog.threshold.index.trace: 500ms
+
+################################## GC Logging ################################
+
+#monitor.jvm.gc.ParNew.warn: 1000ms
+#monitor.jvm.gc.ParNew.info: 700ms
+#monitor.jvm.gc.ParNew.debug: 400ms
+
+#monitor.jvm.gc.ConcurrentMarkSweep.warn: 10s
+#monitor.jvm.gc.ConcurrentMarkSweep.info: 5s
+#monitor.jvm.gc.ConcurrentMarkSweep.debug: 2s

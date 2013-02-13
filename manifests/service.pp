@@ -1,11 +1,9 @@
 class elasticsearch::service {
 
   service {
-    $elasticsearch::params::service_name:
-      enable    => true,
+    $elasticsearch::service_name:
       ensure    => running,
-      pattern   => "${elasticsearch::params::service_pattern}",
-      hasstatus => false;
+      enable    => true;
   }
 
 }

@@ -1,14 +1,13 @@
 class elasticsearch::config {
 
   file {
-    $elasticsearch::params::configdir:
+    $elasticsearch::configdir:
       ensure   => directory;
-    $elasticsearch::params::configfile:
+    $elasticsearch::configfile:
       ensure   => present,
-      source   => 'puppet:///modules/elasticsearch/elasticsearch.yml',
-      mode     => 755,
+      content  => $elasticsearch::configfile_content,
+      mode     => '0644',
       owner    => root,
-      group    => root,
-      notify   => Class['elasticsearch::service'];
+      group    => root;
   }
 }
