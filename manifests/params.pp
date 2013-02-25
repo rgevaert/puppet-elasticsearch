@@ -1,9 +1,5 @@
 class elasticsearch::params {
 
-  # No clustername set by default
-  $cluster_name       = ''
-  $node_name          = $::hostname
-
   $package            = 'elasticsearch'
   $package_ensure     = 'installed'
   $service            = 'elasticsearch'
