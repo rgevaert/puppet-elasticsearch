@@ -23,8 +23,8 @@ class elasticsearch (
   $service_name       = $elasticsearch::params::service_name
 ) inherits elasticsearch::params {
 
-  class{'elasticsearch::install':} ~>
-  class{'elasticsearch::config':}  ->
-  class{'elasticsearch::service':}
+  class{'elasticsearch::install':;} ~>
+  class{'elasticsearch::config':;}  ->
+  class{'elasticsearch::service':;}
 
 }
