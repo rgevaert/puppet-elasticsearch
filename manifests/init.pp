@@ -12,6 +12,8 @@
 #
 # [Remember: No empty lines between comments and class definition]
 class elasticsearch (
+  $cluster_name       = $elasticsearch::params::cluster_name,
+  $node_name          = $elasticsearch::params::node_name,
   $package_ensure     = $elasticsearch::params::package_ensure,
   $package            = $elasticsearch::params::package,
   $service            = $elasticsearch::params::service,
