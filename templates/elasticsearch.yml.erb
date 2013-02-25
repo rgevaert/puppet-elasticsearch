@@ -29,7 +29,6 @@
 # Cluster name identifies your cluster for auto-discovery. If you're running
 # multiple clusters on the same network, make sure you're using unique names.
 #
-scope.lookupvar('elasticsearch::cluster_name')
 <%if scope.lookupvar('elasticsearch::cluster_name') == '' -%>
 # cluster.name: elasticsearch
 <% else -%>
