@@ -30,7 +30,7 @@
 # multiple clusters on the same network, make sure you're using unique names.
 #
 scope.lookupvar('elasticsearch::cluster_name')
-<%if scope.lookupvar('elasticsearch::cluster_name') '' -%>
+<%if scope.lookupvar('elasticsearch::cluster_name') == '' -%>
 # cluster.name: elasticsearch
 <% else -%>
 cluster.name: <%= scope.lookupvar('elasticsearch::cluster_name') %>
