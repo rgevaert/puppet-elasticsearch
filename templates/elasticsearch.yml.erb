@@ -41,7 +41,7 @@ cluster.name: <%= scope.lookupvar("elasticsearch::cluster_name") %>
 # from configuring them manually. You can tie this node to a specific name:
 #
 # node.name: "Franz Kafka"
-node.name: <%= node_name %>
+node.name: <%= scope.lookupvar("elasticsearch::node_name") %>
 
 # Every node can be configured to allow or deny being eligible as the master,
 # and to allow or deny to store the data.
