@@ -12,7 +12,7 @@
 #
 # [Remember: No empty lines between comments and class definition]
 class elasticsearch (
-  $cluster_name       = ''
+  $cluster_name       = '',
   $node_name          = $::hostname,
   $package_ensure     = $elasticsearch::params::package_ensure,
   $package            = $elasticsearch::params::package,
