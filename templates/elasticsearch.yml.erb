@@ -34,6 +34,10 @@ cluster.name: <%= scope.lookupvar('::elasticsearch::cluster_name') %>
 <% else %>
 # cluster.name: elasticsearch
 <% end %>
+1 <%= scope.lookupvar('::elasticsearch::cluster_name') %>
+2 <%= scope.lookupvar('elasticsearch::cluster_name') %>
+3 <%= scope.lookupvar('cluster_name') %>
+4 <%= scope.lookupvar('::cluster_name') %>
 
 #################################### Node #####################################
 
