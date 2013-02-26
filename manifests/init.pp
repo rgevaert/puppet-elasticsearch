@@ -12,28 +12,19 @@
 #
 # [Remember: No empty lines between comments and class definition]
 class elasticsearch (
-  $cluster_name       = '',
-  $node_name          = $::hostname,
-  $package_ensure     = $elasticsearch::params::package_ensure,
-  $package            = $elasticsearch::params::package,
-  $service            = $elasticsearch::params::service,
-  $configdir          = $elasticsearch::params::configdir,
-  $configfile         = $elasticsearch::params::configfile,
-  $configfile_content = $elasticsearch::params::configfile_content,
-  $service_name       = $elasticsearch::params::service_name
+  $cluster_name        = $elasticsearch::params::cluster_name,
+  $node_name           = $elasticsearch::params::node_name,
+  $package_ensure      = $elasticsearch::params::package_ensure,
+  $package             = $elasticsearch::params::package,
+  $service             = $elasticsearch::params::service,
+  $configdir           = $elasticsearch::params::configdir,
+  $configfile          = $elasticsearch::params::configfile,
+  $config_template     = $elasticsearch::params::config_template,
+  $service_name        = $elasticsearch::params::service_name
 ) inherits elasticsearch::params {
 
-  notice($elasticsearch::cluster_name)
-  notice($elasticsearch::node_name)
-  notice($elasticsearch::params::cluster_name)
-  notice($elasticsearch::params::node_name)
-
-  include elasticsearch::install
-  include elasticsearch::config
-  include elasticsearch::service
-
-  Class['elasticsearch::install'] ~>
-  Class['elasticsearch::config']  ->
-  Class['elasticsearch::service']
+  class{'elasticsearch::install':;} ~>
+  class{'elasticsearch::config':;}  ->
+  class{'elasticsearch::service':;}
 
 }

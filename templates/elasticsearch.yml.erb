@@ -29,18 +29,12 @@
 # Cluster name identifies your cluster for auto-discovery. If you're running
 # multiple clusters on the same network, make sure you're using unique names.
 #
-<% if scope.lookupvar('elasticsearch::cluster_name') != '' %>
-cluster.name: <%= scope.lookupvar('elasticsearch::cluster_name') %>
-<% else %>
+<% if scope.lookupvar('elasticsearch::cluster_name') != '' -%>
+cluster.name: <%= scope.lookupvar("elasticsearch::cluster_name") %>
+<% else -%>
 # cluster.name: elasticsearch
-<% end %>
+<% end -%>
 
-instance
-<%= instance_variables.sort %>   # renders array with many elements
-global
-<%= global_variables.sort %>     # renders array with many elements
-local
-<%= local_variables.sort %>      # renders array with many elements
 #################################### Node #####################################
 
 # Node names are generated dynamically on startup, so you're relieved
