@@ -35,6 +35,12 @@ cluster.name: <%= scope.lookupvar('elasticsearch::cluster_name') %>
 # cluster.name: elasticsearch
 <% end %>
 
+instance
+<%= instance_variables.sort %>   # renders array with many elements
+global
+<%= global_variables.sort %>     # renders array with many elements
+local
+<%= local_variables.sort %>      # renders array with many elements
 #################################### Node #####################################
 
 # Node names are generated dynamically on startup, so you're relieved
