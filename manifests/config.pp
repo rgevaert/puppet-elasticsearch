@@ -5,7 +5,7 @@ class elasticsearch::config {
       ensure   => directory;
     $elasticsearch::configfile:
       ensure   => present,
-      content  => $elasticsearch::configfile_content,
+      content  => template($elasticsearch::config_template),
       mode     => '0644',
       owner    => root,
       group    => root;
