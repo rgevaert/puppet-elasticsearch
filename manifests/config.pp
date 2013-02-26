@@ -1,5 +1,9 @@
 class elasticsearch::config {
 
+ notice("config $elasticsearch::cluster_name")
+ notice("config $elasticsearch::cluster_name")
+
+
   file {
     $elasticsearch::configdir:
       ensure   => directory;
