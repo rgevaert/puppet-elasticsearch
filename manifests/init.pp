@@ -23,10 +23,10 @@ class elasticsearch (
   $service_name       = $elasticsearch::params::service_name
 ) inherits elasticsearch::params {
 
-  notice($elacticsearch::cluster_name)
-  notice($elacticsearch::node_name)
-  notice($elacticsearch::params::cluster_name)
-  notice($elacticsearch::params::node_name)
+  notice($elasticsearch::cluster_name)
+  notice($elasticsearch::node_name)
+  notice($elasticsearch::params::cluster_name)
+  notice($elasticsearch::params::node_name)
 
   include elasticsearch::install
   include elasticsearch::config
