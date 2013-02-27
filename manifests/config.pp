@@ -9,5 +9,11 @@ class elasticsearch::config {
       mode     => '0644',
       owner    => root,
       group    => root;
+    '/etc/default/elasticsearch':
+      ensure   => present,
+      content  => template($elasticsearch::default_template),
+      mode     => '0644',
+      owner    => root,
+      group    => root;
   }
 }

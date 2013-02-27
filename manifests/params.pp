@@ -8,6 +8,11 @@ class elasticsearch::params {
   $configdir          = '/etc/elasticsearch'
   $configfile         = "${configdir}/elasticsearch.yml"
   $config_template    = 'elasticsearch/elasticsearch.yml.erb'
+  $default_template   = 'elasticsearch/default.erb'
   $service_name       = 'elasticsearch'
 
+  # Default file params
+  $heap_size          = '2G'
+  $data_dir           = '/var/lib/elasticsearch'
+  $java_opts          = ''
 }
