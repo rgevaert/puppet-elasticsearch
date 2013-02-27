@@ -28,7 +28,7 @@ class elasticsearch (
 ) inherits elasticsearch::params {
 
   class{'elasticsearch::install':;} ~>
-  class{'elasticsearch::config':;}  ->
+  class{'elasticsearch::config':;}  ~>
   class{'elasticsearch::service':;}
 
 }
