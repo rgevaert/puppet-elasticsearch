@@ -6,7 +6,7 @@
 #ES_GROUP=elasticsearch
 
 # Heap Size (defaults to 256m min, 1g max)
-ES_HEAP_SIZE=<% scope.lookupvar("elasticsearch::heap_size") %>
+ES_HEAP_SIZE=<%= scope.lookupvar("elasticsearch::heap_size") %>
 
 # Heap new generation
 #ES_HEAP_NEWSIZE=
@@ -26,7 +26,7 @@ ES_HEAP_SIZE=<% scope.lookupvar("elasticsearch::heap_size") %>
 #LOG_DIR=/var/log/elasticsearch
 
 # ElasticSearch data directory
-DATA_DIR=<% scope.lookupvar("elasticsearch::data_dir") %>
+DATA_DIR=<%= scope.lookupvar("elasticsearch::data_dir") %>
 
 # ElasticSearch work directory
 #WORK_DIR=/tmp/elasticsearch
@@ -38,4 +38,4 @@ DATA_DIR=<% scope.lookupvar("elasticsearch::data_dir") %>
 #CONF_FILE=/etc/elasticsearch/elasticsearch.yml
 
 # Additional Java OPTS
-ES_JAVA_OPTS=<% scope.lookupvar("elasticsearch::java_opts") %>
+ES_JAVA_OPTS=<%= scope.lookupvar("elasticsearch::java_opts") %>
