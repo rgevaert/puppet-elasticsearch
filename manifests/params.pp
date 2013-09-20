@@ -11,6 +11,11 @@ class elasticsearch::params {
   $default_template   = 'elasticsearch/default.erb'
   $service_name       = 'elasticsearch'
 
+  # elasticsearch specific parameters
+  $recover_after_nodes= 1
+  $recover_after_time = '5m'
+  $expected_nodes     = 2
+
   # Default file params
   $heap_size          = '2G'
   $data_dir           = '/var/lib/elasticsearch'
