@@ -27,7 +27,7 @@ class elasticsearch (
   $service_name        = $elasticsearch::params::service_name,
   $recover_after_nodes = $elasticsearch::params::recover_after_nodes,
   $recover_after_time  = $elasticsearch::params::recover_after_time,
-  $expected_nodes      = $elasticsearch::params::recover_nodes
+  $expected_nodes      = $elasticsearch::params::expected_nodes
 ) inherits elasticsearch::params {
 
   class{'elasticsearch::install':;} ~>
