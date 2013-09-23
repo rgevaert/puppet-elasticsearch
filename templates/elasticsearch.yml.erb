@@ -139,6 +139,8 @@ node.name: <%= scope.lookupvar('elasticsearch::node_name') %>
 # Use the Index Status API (<http://localhost:9200/A/_status>) to inspect
 # the index status.
 
+index.number_of_shards: <%= scope.lookupvar("elasticsearch::index_number_of_shards") %>
+index.number_of_replicas: <%= scope.lookupvar("elasticsearch::index_number_of_replicas") %>
 
 #################################### Paths ####################################
 

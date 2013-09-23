@@ -12,9 +12,11 @@ class elasticsearch::params {
   $service_name       = 'elasticsearch'
 
   # elasticsearch specific parameters
-  $recover_after_nodes= 1
-  $recover_after_time = '5m'
-  $expected_nodes     = 2
+  $recover_after_nodes            = 1
+  $recover_after_time             = '5m'
+  $expected_nodes                 = 2
+  $index_number_of_shards         = 5
+  $index_index_number_of_replicas = 1
 
   # Default file params
   $heap_size          = '2G'
