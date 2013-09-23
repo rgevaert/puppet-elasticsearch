@@ -29,7 +29,7 @@ class elasticsearch (
   $recover_after_time  = $elasticsearch::params::recover_after_time,
   $expected_nodes      = $elasticsearch::params::expected_nodes,
   $index_number_of_shards = $elasticsearch::params::index_number_of_shards,
-  $index_index_number_of_replicas = $elasticsearch::params::index_index_number_of_replicas
+  $index_number_of_replicas = $elasticsearch::params::index_index_number_of_replicas
 ) inherits elasticsearch::params {
 
   class{'elasticsearch::install':;} ~>
