@@ -1,7 +1,7 @@
 class elasticsearch::backup(  $instance,
                               $backup_dir = '',
-                              $hour = '04',
-                              $min  = '0')
+                              $hour       = '4',
+                              $minute     = '0')
 {
 
   cron {
