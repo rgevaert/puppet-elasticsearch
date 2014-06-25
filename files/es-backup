@@ -1,0 +1,41 @@
+#!/bin/bash  
+
+# Simple script that takes a backup of the elasticsearch database running on localhost
+
+[ $# -lt 1 ] && { echo "Usage: $0 <backup_id> [/var/backups/elasticsearch]"; exit 1; }
+
+BACKUP_ID=$1
+LOCATION=${2:-/var/backups/elasticsearch}
+
+# Address of elasticsearch server
+ES='http://localhost:9200'
+
+if ! [ -d $LOCATION ]
+then
+	mkdir $LOCATION
+	chown elasticsearch:elasticsearch $LOCATION
+fi
+
+# create repository
+REPO=$(curl -sS -XGET "$ES/_snapshot/_all")
+
+if ! [[ $REPO == *'"location":"'$LOCATION'"'* ]];
+then
+ 	REPO=$(curl -sS -XPUT "${ES}/_snapshot/${BACKUP_ID}" -d '{ "type": "fs", "settings": { "location": "'$LOCATION'", "compress": true } }')
+	if ! [[ $REPO == *'"acknowledged":true'* ]]
+	then
+		echo "elasticsearch creating backup repo $BACKUP_ID failed"
+		exit 1
+	fi
+fi
+
+# create snapshot
+DATE=$(date +"%Y-%m-%d_%T")
+BACKUP=$(curl -sS -XPUT "$ES/_snapshot/${BACKUP_ID}/$DATE?wait_for_completion=true")
+
+if ! [[ $BACKUP == *'"state":"SUCCESS"'* ]];  
+then 
+	echo "elasticsearch backup $BACKUP_ID failed:"
+	echo $BACKUP
+	exit 1
+fi
