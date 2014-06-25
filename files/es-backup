@@ -1,5 +1,7 @@
 #!/bin/bash  
 
+# Managed with Puppet
+
 # Simple script that takes a backup of the elasticsearch database running on localhost
 
 [ $# -lt 1 ] && { echo "Usage: $0 <backup_id> [/var/backups/elasticsearch]"; exit 1; }
