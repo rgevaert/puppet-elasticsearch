@@ -213,7 +213,11 @@ index.number_of_replicas: <%= scope.lookupvar("elasticsearch::index_number_of_re
 
 # Set both 'bind_host' and 'publish_host':
 #
+<% if scope.lookupvar('elasticsearch::network_host') != '' -%>
+network.host: <%= scope.lookupvar("elasticsearch::network_host") %>
+<% else -%>
 # network.host: 192.168.0.1
+<% end -%>
 
 # Set a custom port for the node to node communication (9300 by default):
 #

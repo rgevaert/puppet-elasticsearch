@@ -16,6 +16,7 @@ class elasticsearch (
   $data_dir            = $elasticsearch::params::data_dir,
   $java_opts           = $elasticsearch::params::java_opts,
   $cluster_name        = $elasticsearch::params::cluster_name,
+  $network_host        = $elasticsearch::params::network_host,
   $node_name           = $elasticsearch::params::node_name,
   $package_ensure      = $elasticsearch::params::package_ensure,
   $package             = $elasticsearch::params::package,

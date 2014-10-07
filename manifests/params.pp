@@ -1,6 +1,7 @@
 class elasticsearch::params {
 
   $cluster_name       = ''
+  $network_host       = ''
   $node_name          = $::hostname
   $package            = 'elasticsearch'
   $package_ensure     = 'installed'
