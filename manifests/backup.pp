@@ -28,6 +28,9 @@ class elasticsearch::backup(  $instance,
       mode    => '0755';
   }
 
+  # Ter info.  Nu hebben we voor wheezy zelf een pakket gemaakt maar
+  # elasticsearch voorziet zelf ook packages in hun eigen repo.
+  # Voor een nieuwere versie kunnen we best die gebruiken.
   package {
     'python-setuptools':
       ensure => present;
