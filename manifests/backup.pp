@@ -14,7 +14,7 @@ class elasticsearch::backup(  $instance,
       minute  => $minute;
     'cleanup-elasticsearch-snapshots':
       ensure  => present,
-      command => "/usr/local/bin/curator --timeout 600 delete snapshots --repository ${instance} --older-than ${retention_days} --time-unit days --timestring '\%Y-\%m-\%d_\%H:\%M:\%S' >/dev/null"
+      command => "/usr/local/bin/curator --timeout 600 delete snapshots --repository ${instance} --older-than ${retention_days} --time-unit days --timestring '\%Y-\%m-\%d_\%H:\%M:\%S' >/dev/null",
       hour    => 0,
       minute  => 5;
   }
