@@ -9,7 +9,7 @@ class elasticsearch::repo {
         'Debian' => "deb http://packages.elasticsearch.org/elasticsearch/${::elasticsearch::major_release}/debian stable main",
         'Ubuntu' => "deb http://packages.elasticsearch.org/elasticsearch/${::elasticsearch::major_release}/debian stable main",
         default  => fail("${::operatingsystem} not supported in elasticsearch::repo")
-  };
+  }
 
   apt::sources_list {
     'elasticsearch':
