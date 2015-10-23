@@ -25,7 +25,14 @@ class elasticsearch (
   $index_number_of_replicas = $elasticsearch::params::index_index_number_of_replicas
 ) inherits elasticsearch::params {
 
-  class{'elasticsearch::repo':;} ~>
+  if($major_release != ''){
+    class{
+      'elasticsearch::repo':
+        notify => Class['elasticsearch::install'],
+        before => Class['elasticsearch::install'];
+    }
+  }
+
   class{'elasticsearch::install':;} ~>
   class{'elasticsearch::config':;}  ~>
   class{'elasticsearch::service':;}
