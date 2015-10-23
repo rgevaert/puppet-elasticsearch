@@ -1,17 +1,9 @@
 # Class: elasticsearch
 #
-# This module manages elasticsearch
+# major_release is like '1.7'
 #
-# Parameters:
-#
-# Actions:
-#
-# Requires:
-#
-# Sample Usage:
-#
-# [Remember: No empty lines between comments and class definition]
 class elasticsearch (
+  $major_release,
   $heap_size           = $elasticsearch::params::heap_size,
   $data_dir            = $elasticsearch::params::data_dir,
   $java_opts           = $elasticsearch::params::java_opts,
@@ -33,6 +25,7 @@ class elasticsearch (
   $index_number_of_replicas = $elasticsearch::params::index_index_number_of_replicas
 ) inherits elasticsearch::params {
 
+  class{'elasticsearch::repo':;} ~>
   class{'elasticsearch::install':;} ~>
   class{'elasticsearch::config':;}  ~>
   class{'elasticsearch::service':;}

@@ -1,7 +1,3 @@
 elasticsearch
 
 This is the elasticsearch module.
-
-You need to provide a package for elasticsearch yourselves and make it available.  Download from elasticsearch site and add to your repo
-
-
