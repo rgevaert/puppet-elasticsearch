@@ -19,6 +19,10 @@ class elasticsearch::params {
   $index_number_of_shards         = 5
   $index_index_number_of_replicas = 1
 
+  # Extra parameters can be defined by the user by
+  # passing a hash
+  $config = {}
+
   # Default file params
   $heap_size          = '2G'
   $data_dir           = '/var/lib/elasticsearch'

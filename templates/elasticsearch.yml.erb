@@ -372,3 +372,9 @@ gateway.expected_nodes: <%= scope.lookupvar("elasticsearch::expected_nodes") %>
 #monitor.jvm.gc.ConcurrentMarkSweep.warn: 10s
 #monitor.jvm.gc.ConcurrentMarkSweep.info: 5s
 #monitor.jvm.gc.ConcurrentMarkSweep.debug: 2s
+<% unless scope.lookupvar('elasticsearch::config').empty? -%>
+# Extra configuration put here by Puppet through elasticsearch::config hash
+<% scope.lookupvar('elasticsearch::config').sort.map do |key, value| -%>
+<%= key %>: <%= value %>
+<% end -%>
+<% end -%>
