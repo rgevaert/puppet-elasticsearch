@@ -34,6 +34,12 @@ class elasticsearch (
     }
   }
 
+  $repo_root = $major_release ? {
+    /1\../    => $major_release,
+    /(\d)\../ => "${1}.x",
+    default   => fail('Can not derive repo_root'),
+  }
+
   class{'elasticsearch::install':;} ~>
   class{'elasticsearch::config':;}  ~>
   class{'elasticsearch::service':;}

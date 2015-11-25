@@ -6,8 +6,8 @@ class elasticsearch::repo {
   }
 
   $repo = $::operatingsystem ? {
-        'Debian' => "deb http://packages.elastic.co/elasticsearch/${::elasticsearch::major_release}/debian stable main",
-        'Ubuntu' => "deb http://packages.elastic.co/elasticsearch/${::elasticsearch::major_release}/debian stable main",
+        'Debian' => "deb http://packages.elastic.co/elasticsearch/${::elasticsearch::repo_root}/debian stable main",
+        'Ubuntu' => "deb http://packages.elastic.co/elasticsearch/${::elasticsearch::repo_root}/debian stable main",
         default  => fail("${::operatingsystem} not supported in elasticsearch::repo")
   }
 
