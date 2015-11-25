@@ -40,6 +40,8 @@ class elasticsearch (
     default   => fail('Can not derive repo_root'),
   }
 
+  notice("repo_root ${repo_root}")
+  notice("repo_root ${::elasticsearch::repo_root}")
   class{'elasticsearch::install':;} ~>
   class{'elasticsearch::config':;}  ~>
   class{'elasticsearch::service':;}
