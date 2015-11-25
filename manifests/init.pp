@@ -26,6 +26,12 @@ class elasticsearch (
   $config              = $elasticsearch::params::config
 ) inherits elasticsearch::params {
 
+  $repo_root = $major_release ? {
+    /1\../    => $major_release,
+    /(\d)\../ => "${1}.x",
+    default   => fail('Can not derive repo_root'),
+  }
+
   if($major_release != ''){
     class{
       'elasticsearch::repo':
@@ -34,14 +40,7 @@ class elasticsearch (
     }
   }
 
-  $repo_root = $major_release ? {
-    /1\../    => $major_release,
-    /(\d)\../ => "${1}.x",
-    default   => fail('Can not derive repo_root'),
-  }
 
-  notice("repo_root ${repo_root}")
-  notice("repo_root ${::elasticsearch::repo_root}")
   class{'elasticsearch::install':;} ~>
   class{'elasticsearch::config':;}  ~>
   class{'elasticsearch::service':;}
