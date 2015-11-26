@@ -32,11 +32,6 @@ class elasticsearch (
     default   => '',
   }
 
-  if ($repo_root == '')
-  {
-    fail('Can not derive repo_root')
-  }
-
   if($major_release != ''){
     class{
       'elasticsearch::repo':
