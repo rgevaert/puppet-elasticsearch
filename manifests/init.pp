@@ -29,7 +29,12 @@ class elasticsearch (
   $repo_root = $major_release ? {
     /1\../    => $major_release,
     /(\d)\../ => "${1}.x",
-    default   => fail('Can not derive repo_root'),
+    default   => '',
+  }
+
+  if ($repo_root == '')
+  {
+    fail('Can not derive repo_root')
   }
 
   if($major_release != ''){
