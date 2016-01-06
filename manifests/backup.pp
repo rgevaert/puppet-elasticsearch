@@ -1,4 +1,6 @@
 # Make snapshosts of ES instance and clean up older
+# This subclass is legacy.  Use elasticsearch::curator to install the curator package
+# And then add the relevant other cronjobs or scripts
 class elasticsearch::backup(  $instance,
                               $backup_dir     = '',
                               $hour           = '4',
