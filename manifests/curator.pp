@@ -12,7 +12,7 @@ class elasticsearch::curator ($version = '3') {
   }
 
   apt::sources_list {
-    'python-elasticsearch-curator':
+    'elasticsearch-curator':
       ensure  => present,
       require => Apt::Key['elasticsearch.org-curator'],
       content => $repo;
@@ -20,6 +20,7 @@ class elasticsearch::curator ($version = '3') {
 
   package {
     'python-elasticsearch-curator':
-      ensure => 'installed';
+      ensure => 'installed',
+      require => Apt::Sources_list['elasticsearch-curator'];
   }
 }
