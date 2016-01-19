@@ -8,4 +8,21 @@ class elasticsearch::install {
       require => Package['openjdk-7-jre-headless'];
   }
 
+  # Fix mlockall issue https://github.com/elastic/elasticsearch/issues/9357
+  if($::lsbdistcodename == 'jessie')
+  {
+    include ::systemd
+
+    file {
+      '/etc/systemd/system/elasticsearch.service.d':
+        ensure => 'directory';
+      '/etc/systemd/system/elasticsearch.service.d/1-lockmem.conf':
+        ensure => 'present',
+        source => 'puppet:///modules/elasticsearch/1-lockmem.conf',
+        owner  => 'root',
+        group  => 'root',
+        notify => Exec['systemctl-daemon-reload'];
+    }
+  }
+
 }
