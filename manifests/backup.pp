@@ -16,14 +16,14 @@ class elasticsearch::backup(  $instance,
       minute  => $minute;
     'cleanup-elasticsearch-snapshots':
       ensure  => present,
-      command => "/usr/local/bin/curator --timeout 600 delete snapshots --repository ${instance} --older-than ${retention_days} --time-unit days --timestring '\%Y-\%m-\%d_\%H:\%M:\%S' >/dev/null",
+      command => "/usr/local/bin/curator --timeout 1800 delete snapshots --repository ${instance} --older-than ${retention_days} --time-unit days --timestring '\%Y-\%m-\%d_\%H:\%M:\%S' >/dev/null",
       hour    => 0,
       minute  => 5;
   }
 
   file {
     '/usr/local/bin/es-backup':
-      ensure  => present,
+      ensure  => file,
       source  => 'puppet:///modules/elasticsearch/es-backup',
       owner   => 'root',
       group   => 'root',
