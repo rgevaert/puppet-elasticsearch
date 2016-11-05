@@ -22,7 +22,12 @@ class elasticsearch::install {
         owner  => 'root',
         group  => 'root',
         notify => Exec['systemctl-daemon-reload'];
+      '/etc/systemd/system/elasticsearch.service.d/2-openfiles.conf':
+        ensure => 'present',
+        source => 'puppet:///modules/elasticsearch/2-openfiles.conf',
+        owner  => 'root',
+        group  => 'root',
+        notify => Exec['systemctl-daemon-reload'];
     }
   }
-
 }
