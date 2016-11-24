@@ -17,13 +17,13 @@ class elasticsearch::install {
       '/etc/systemd/system/elasticsearch.service.d':
         ensure => 'directory';
       '/etc/systemd/system/elasticsearch.service.d/1-lockmem.conf':
-        ensure => 'present',
+        ensure => 'file',
         source => 'puppet:///modules/elasticsearch/1-lockmem.conf',
         owner  => 'root',
         group  => 'root',
         notify => Exec['systemctl-daemon-reload'];
       '/etc/systemd/system/elasticsearch.service.d/2-openfiles.conf':
-        ensure => 'present',
+        ensure => 'file',
         source => 'puppet:///modules/elasticsearch/2-openfiles.conf',
         owner  => 'root',
         group  => 'root',
