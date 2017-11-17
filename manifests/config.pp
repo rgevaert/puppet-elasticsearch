@@ -16,4 +16,11 @@ class elasticsearch::config {
       owner    => root,
       group    => root;
   }
+
+  cron { 'clean-up-es-logs':
+    command => 'find /var/log/elasticsearch/ -type f  -mtime +7  -delete',
+    user    => root,
+    hour    => '6',
+  }
+
 }
